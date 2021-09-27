@@ -1,18 +1,37 @@
 import { useState, useEffect } from 'react';
-import { fetchMovie } from 'services/apiSettings';
-import { requestType } from 'services/requests';
+import { useParams, Route, NavLink, useRouteMatch } from 'react-router-dom';
+import { fetchMovieDetails } from 'services/apiSettings';
+import { Cast } from 'components/Cast/Cast';
+import { Rewiews } from 'components/Reviews/Reviews';
 
-export function MovieDetailsPage({ id }) {
+export function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
+  const { movieId } = useParams();
+  const { url } = useRouteMatch();
 
   useEffect(() => {
-    const { MOVIE_INFO } = requestType;
-    const page = '';
-    const type = `${MOVIE_INFO}${id}`;
-    fetchMovie(page, type).then(res => {
+    fetchMovieDetails(movieId).then(res => {
       setMovie(res.title);
     });
-  }, [id]);
+  }, [movieId]);
 
-  return <h1>{movie}</h1>;
+  return (
+    <>
+      <h1>{movie}</h1>
+      <ul>
+        <li>
+          <NavLink to={`${url}/cast`}>Cast</NavLink>
+        </li>
+        <li>
+          <NavLink to={`${url}/reviews`}>Reviews</NavLink>
+        </li>
+      </ul>
+      <Route path={`${url}/cast`}>
+        <Cast id={movieId} />
+      </Route>
+      <Route path={`${url}/reviews`}>
+        <Rewiews id={movieId} />
+      </Route>
+    </>
+  );
 }
