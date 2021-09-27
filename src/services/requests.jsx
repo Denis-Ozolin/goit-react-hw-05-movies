@@ -1,7 +1,7 @@
 export const requestType = {
   POPULAR: 'trending/movie/day',
   SEARCH_MOVIES: 'search/movie',
-  MOVIES_INFO: 'movies/get-movie-details',
+  MOVIE_INFO: 'movie/',
   CASTS_INFO: 'movies/get-movie-details',
   MOVIE_REVIEW: 'movies/get-movie-reviews',
 };
