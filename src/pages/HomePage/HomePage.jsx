@@ -18,7 +18,7 @@ export function HomePage() {
 
   return (
     <>
-      <h1>movies</h1>
+      <h1>Trending movies</h1>
       {movies.length !== 0 && <MovieList movies={movies} />}
       <button type="button" onClick={onLoadMore}>
         Load more

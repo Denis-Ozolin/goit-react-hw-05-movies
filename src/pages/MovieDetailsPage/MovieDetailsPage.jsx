@@ -3,6 +3,7 @@ import { useParams, Route, NavLink, useRouteMatch } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/apiSettings';
 import { Cast } from 'components/Cast/Cast';
 import { Rewiews } from 'components/Reviews/Reviews';
+import { MovieCard } from 'components/MovieCard/MovieCard';
 
 export function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -11,13 +12,15 @@ export function MovieDetailsPage() {
 
   useEffect(() => {
     fetchMovieDetails(movieId).then(res => {
+      console.log(res);
       setMovie(res.title);
     });
   }, [movieId]);
 
   return (
     <>
-      <h1>{movie}</h1>
+      <MovieCard />
+      <h3>Additional information {movie}</h3>
       <ul>
         <li>
           <NavLink to={`${url}/cast`}>Cast</NavLink>

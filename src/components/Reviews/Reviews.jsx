@@ -6,7 +6,6 @@ export function Rewiews({ id }) {
 
   useEffect(() => {
     fetchMovieReviews(id).then(res => {
-      console.log(res);
       setReviews(res.results);
     });
   }, [id]);
@@ -15,10 +14,10 @@ export function Rewiews({ id }) {
     <>
       {reviews && (
         <ul>
-          {reviews.map(rewiew => (
-            <li key={rewiew.id}>
-              <h2>{rewiew.author}</h2>
-              <p>{rewiew.content}</p>
+          {reviews.map(review => (
+            <li key={review.id}>
+              <h2>{review.author}</h2>
+              <p>{review.content}</p>
             </li>
           ))}
         </ul>
