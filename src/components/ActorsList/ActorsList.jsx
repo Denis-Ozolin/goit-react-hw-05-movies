@@ -5,12 +5,12 @@ export const ActorsList = ({ actorList, baseUrl }) => {
     <ul>
       {actorList.map(actor => (
         <li key={actor.id}>
-          <h2>{actor.name}</h2>
           {actor.profile_path ? (
             <img src={`${baseUrl}${actor.profile_path}`} alt={actor.name} />
           ) : (
             <ImageNotFound />
           )}
+          <h2>{actor.name}</h2>
         </li>
       ))}
     </ul>

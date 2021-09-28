@@ -1,22 +1,27 @@
-export const MovieCard = () => {
+import { BASE_POSTER_URL } from '../../services/apiSettings';
+
+export const MovieCard = ({ detailMovie }) => {
+  const { poster_path, title, vote_average, overview, genres } = detailMovie;
+
   return (
     <div>
       <div>
-        <img src="#" alt="movie.title" />
+        <img src={`${BASE_POSTER_URL}${poster_path}`} alt={title} />
       </div>
       <div>
-        <h2>Movie name</h2>
-        <p>Use Score %</p>
-        <p>Description</p>
+        <h2>{title}</h2>
+        <p>Use Score {Math.round((vote_average * 100) / 10)}%</p>
+        <h4>Overview</h4>
+        <p>{overview}</p>
         <ul>
           Genres
-          <li>Scary movie</li>
+          {genres.map(genre => (
+            <li key={genre.id}>
+              <p>{genre.name}</p>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
   );
 };
-
-// genres.map(ganre => {
-//   <li key={genre.id}>{genre.title}</li>
-// })

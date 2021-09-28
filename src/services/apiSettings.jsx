@@ -2,6 +2,9 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = '?api_key=7116d13f34d25e4b272adb87a6322482';
 
 export const BASE_PHOTO_URL = 'https://image.tmdb.org/t/p/w200';
+export const BASE_POSTER_URL = 'https://image.tmdb.org/t/p/w500';
+export const DEFAULT_PHOTO =
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png';
 
 export const fetchPopularMovies = page => {
   return fetch(`${BASE_URL}trending/movie/day${API_KEY}&page=${page}`, {

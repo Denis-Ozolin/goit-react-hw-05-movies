@@ -8,19 +8,15 @@ import { MovieCard } from 'components/MovieCard/MovieCard';
 export function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
-  const { url } = useRouteMatch();
+  const { url, path } = useRouteMatch();
 
   useEffect(() => {
-    fetchMovieDetails(movieId).then(res => {
-      console.log(res);
-      setMovie(res.title);
-    });
+    fetchMovieDetails(movieId).then(res => setMovie(res));
   }, [movieId]);
 
   return (
     <>
-      <MovieCard />
-      <h3>Additional information {movie}</h3>
+      <h3>Additional information</h3>
       <ul>
         <li>
           <NavLink to={`${url}/cast`}>Cast</NavLink>
@@ -29,10 +25,11 @@ export function MovieDetailsPage() {
           <NavLink to={`${url}/reviews`}>Reviews</NavLink>
         </li>
       </ul>
-      <Route path={`${url}/cast`}>
+      {movie && <MovieCard detailMovie={movie} />}
+      <Route path={`${path}/cast`}>
         <Cast id={movieId} />
       </Route>
-      <Route path={`${url}/reviews`}>
+      <Route path={`${path}/reviews`}>
         <Rewiews id={movieId} />
       </Route>
     </>
