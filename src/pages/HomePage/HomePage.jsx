@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { fetchPopularMovies } from '../../services/apiSettings';
 import { MovieList } from 'components/MovieList/MovieList';
+import { Button } from 'components/Button/Button';
 
-export function HomePage() {
+export default function HomePage() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -20,9 +21,7 @@ export function HomePage() {
     <>
       <h1>Trending movies</h1>
       {movies.length !== 0 && <MovieList movies={movies} />}
-      <button type="button" onClick={onLoadMore}>
-        Load more
-      </button>
+      <Button name="Load more" onClick={onLoadMore} />
     </>
   );
 }

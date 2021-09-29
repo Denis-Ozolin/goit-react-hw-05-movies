@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchMovieReviews } from 'services/apiSettings';
 
-export function Rewiews({ id }) {
+export default function Rewiews({ id }) {
   const [reviews, setReviews] = useState(null);
 
   useEffect(() => {

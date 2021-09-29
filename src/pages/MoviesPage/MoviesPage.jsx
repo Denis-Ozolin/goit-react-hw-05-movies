@@ -3,7 +3,7 @@ import { fetchSearchMovies } from 'services/apiSettings';
 import { SearchMovieForm } from 'components/SearchMovieForm/SearchMovieForm';
 import { MovieList } from 'components/MovieList/MovieList';
 
-export function MoviesPage() {
+export default function MoviesPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState([]);
 
