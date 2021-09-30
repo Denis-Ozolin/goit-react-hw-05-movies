@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { AppBar } from 'components/Navigation/Navigation';
+import { AppBar } from 'components/AppBar/AppBar';
 import { Spinner } from 'components/Spinner/Spinner';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage' /* webpackChunkName: "home" */));

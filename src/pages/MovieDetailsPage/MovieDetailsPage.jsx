@@ -1,6 +1,14 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { useParams, Route, NavLink, useRouteMatch } from 'react-router-dom';
+import {
+  useParams,
+  Route,
+  NavLink,
+  useRouteMatch,
+  useLocation,
+  useHistory,
+} from 'react-router-dom';
 import { fetchMovieDetails } from 'services/apiSettings';
+import { Button } from 'components/Button/Button';
 import { MovieCard } from 'components/MovieCard/MovieCard';
 
 const Cast = lazy(() => import('components/Cast/Cast' /* webpackChunkName: "cast" */));
@@ -10,10 +18,17 @@ export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
   const { url, path } = useRouteMatch();
+  const location = useLocation();
+  const history = useHistory();
+  // console.log('in MovieDetailsPage', location);
 
   useEffect(() => {
     fetchMovieDetails(movieId).then(res => setMovie(res));
   }, [movieId]);
+
+  const handleGoBack = () => {
+    history.push(location.state.from ? location.state.from : '/');
+  };
 
   return (
     <>
@@ -26,6 +41,7 @@ export default function MovieDetailsPage() {
           <NavLink to={`${url}/reviews`}>Reviews</NavLink>
         </li>
       </ul>
+      <Button name="Go back" onClick={handleGoBack} />
       {movie && <MovieCard detailMovie={movie} />}
       <Suspense fallback={null}>
         <Route path={`${path}/cast`}>
