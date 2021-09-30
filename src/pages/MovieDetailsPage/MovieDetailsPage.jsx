@@ -2,6 +2,7 @@ import { useState, useEffect, lazy, Suspense } from 'react';
 import {
   useParams,
   Route,
+  Switch,
   NavLink,
   useRouteMatch,
   useLocation,
@@ -26,7 +27,7 @@ export default function MovieDetailsPage() {
   }, [movieId]);
 
   const handleGoBack = () => {
-    history.push(location.state.from ? location.state.from : '/');
+    history.push(location.state?.from ? location.state.from : '/');
   };
 
   return (
@@ -43,12 +44,14 @@ export default function MovieDetailsPage() {
       <Button name="Go back" onClick={handleGoBack} />
       {movie && <MovieCard detailMovie={movie} />}
       <Suspense fallback={null}>
-        <Route path={`${url}/cast`}>
-          <Cast id={movieId} />
-        </Route>
-        <Route path={`${url}/reviews`}>
-          <Rewiews id={movieId} />
-        </Route>
+        <Switch>
+          <Route path={`${url}/cast`}>
+            <Cast id={movieId} />
+          </Route>
+          <Route path={`${url}/reviews`}>
+            <Rewiews id={movieId} />
+          </Route>
+        </Switch>
       </Suspense>
     </>
   );
