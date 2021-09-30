@@ -1,19 +1,10 @@
-// import { useLocation, useHistory } from 'react-router-dom';
 import { BASE_POSTER_URL } from '../../services/apiSettings';
-// import { Button } from 'components/Button/Button';
 
 export function MovieCard({ detailMovie }) {
-  // const location = useLocation();
-  // const history = useHistory();
   const { poster_path, title, vote_average, overview, genres } = detailMovie;
-
-  // const handleGoBack = () => {
-  //   history.push(location.state.from ? location.state.from: '/');
-  // };
 
   return (
     <>
-      {/* <Button name="Go back" onClick={handleGoBack} /> */}
       <div>
         <div>
           <img src={`${BASE_POSTER_URL}${poster_path}`} alt={title} />

@@ -17,10 +17,9 @@ const Rewiews = lazy(() => import('components/Reviews/Reviews' /* webpackChunkNa
 export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
-  const { url, path } = useRouteMatch();
+  const { url } = useRouteMatch();
   const location = useLocation();
   const history = useHistory();
-  // console.log('in MovieDetailsPage', location);
 
   useEffect(() => {
     fetchMovieDetails(movieId).then(res => setMovie(res));
@@ -35,19 +34,19 @@ export default function MovieDetailsPage() {
       <h3>Additional information</h3>
       <ul>
         <li>
-          <NavLink to={`${url}/cast`}>Cast</NavLink>
+          <NavLink to={{ ...location, pathname: `${url}/cast` }}>Cast</NavLink>
         </li>
         <li>
-          <NavLink to={`${url}/reviews`}>Reviews</NavLink>
+          <NavLink to={{ ...location, pathname: `${url}/reviews` }}>Reviews</NavLink>
         </li>
       </ul>
       <Button name="Go back" onClick={handleGoBack} />
       {movie && <MovieCard detailMovie={movie} />}
       <Suspense fallback={null}>
-        <Route path={`${path}/cast`}>
+        <Route path={`${url}/cast`} exact>
           <Cast id={movieId} />
         </Route>
-        <Route path={`${path}/reviews`}>
+        <Route path={`${url}/reviews`} exact>
           <Rewiews id={movieId} />
         </Route>
       </Suspense>

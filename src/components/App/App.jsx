@@ -17,14 +17,14 @@ export function App() {
       <AppBar />
       <Suspense fallback={<Spinner />}>
         <Switch>
-          <Route path="/" exact>
-            <HomePage />
-          </Route>
           <Route path="/movies" exact>
             <MoviesPage />
           </Route>
           <Route path="/movies/:movieId">
             <MovieDetailsPage />
+          </Route>
+          <Route path="/">
+            <HomePage />
           </Route>
         </Switch>
       </Suspense>

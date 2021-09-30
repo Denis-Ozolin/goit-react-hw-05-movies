@@ -1,15 +1,14 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 
 export const MovieList = ({ movies }) => {
-  const location = useLocation();
-  console.log(location.state);
+  const { path } = useRouteMatch();
 
   return (
     <div>
       <ul>
         {movies.map(movie => (
           <li key={movie.id}>
-            <Link to={{ ...location, pathname: `/movies/${movie.id}` }}>
+            <Link to={{ pathname: `/movies/${movie.id}`, state: { from: path } }}>
               {movie.original_title}
             </Link>
           </li>
