@@ -43,10 +43,10 @@ export default function MovieDetailsPage() {
       <Button name="Go back" onClick={handleGoBack} />
       {movie && <MovieCard detailMovie={movie} />}
       <Suspense fallback={null}>
-        <Route path={`${url}/cast`} exact>
+        <Route path={`${url}/cast`}>
           <Cast id={movieId} />
         </Route>
-        <Route path={`${url}/reviews`} exact>
+        <Route path={`${url}/reviews`}>
           <Rewiews id={movieId} />
         </Route>
       </Suspense>
