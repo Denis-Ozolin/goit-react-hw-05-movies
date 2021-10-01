@@ -1,7 +1,8 @@
 import { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { AppBar } from 'components/AppBar/AppBar';
+import { MoviesInfoHeader } from 'components/MoviesInfoHeader/MoviesInfoHeader';
 import { Spinner } from 'components/Spinner/Spinner';
+import { Container } from './App.styled';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage' /* webpackChunkName: "home" */));
 const MoviesPage = lazy(() =>
@@ -13,8 +14,8 @@ const MovieDetailsPage = lazy(() =>
 
 export function App() {
   return (
-    <div>
-      <AppBar />
+    <Container>
+      <MoviesInfoHeader />
       <Suspense fallback={<Spinner />}>
         <Switch>
           <Route path="/movies" exact>
@@ -28,6 +29,6 @@ export function App() {
           </Route>
         </Switch>
       </Suspense>
-    </div>
+    </Container>
   );
 }

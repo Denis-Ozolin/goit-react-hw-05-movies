@@ -1,8 +1,9 @@
 import { ImageNotFound } from 'components/ImageNotFound/ImageNotFound';
+import { List } from './ActorsList.styled';
 
 export const ActorsList = ({ actorList, baseUrl }) => {
   return (
-    <ul>
+    <List>
       {actorList.map(actor => (
         <li key={actor.id}>
           {actor.profile_path ? (
@@ -13,6 +14,6 @@ export const ActorsList = ({ actorList, baseUrl }) => {
           <h2>{actor.name}</h2>
         </li>
       ))}
-    </ul>
+    </List>
   );
 };

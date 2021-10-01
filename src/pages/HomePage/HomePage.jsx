@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { fetchPopularMovies } from '../../services/apiSettings';
 import { MovieList } from 'components/MovieList/MovieList';
-import { Button } from 'components/Button/Button';
+import { StyledButton } from 'components/Button/Button.styled';
+import { Container } from './HomePage.styled';
+import { Title } from 'components/StyledHeading/Title.styled';
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
@@ -10,6 +12,7 @@ export default function HomePage() {
   useEffect(() => {
     fetchPopularMovies(page).then(res => {
       setMovies(state => [...state, ...res.results]);
+      onScrollPage(page);
     });
   }, [page]);
 
@@ -17,11 +20,22 @@ export default function HomePage() {
     setPage(state => state + 1);
   };
 
+  const onScrollPage = page => {
+    if (page > 1) {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
-    <>
-      <h1>Trending movies</h1>
+    <Container>
+      <Title>Trending movies</Title>
       {movies.length !== 0 && <MovieList movies={movies} />}
-      <Button name="Load more" onClick={onLoadMore} />
-    </>
+      <StyledButton onClick={onLoadMore} type="button">
+        Load more
+      </StyledButton>
+    </Container>
   );
 }

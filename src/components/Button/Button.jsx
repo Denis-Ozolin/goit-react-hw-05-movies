@@ -1,5 +1,3 @@
-export const Button = ({ name, onClick }) => (
-  <button onClick={onClick} type="button">
-    {name}
-  </button>
-);
+import { StyledButton } from './Button.styled';
+
+export const Button = ({ onClick = null }) => <StyledButton onClick={onClick} />;

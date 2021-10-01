@@ -1,16 +1,11 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import {
-  useParams,
-  Route,
-  Switch,
-  NavLink,
-  useRouteMatch,
-  useLocation,
-  useHistory,
-} from 'react-router-dom';
+import { useParams, Route, Switch, useRouteMatch, useLocation, useHistory } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/apiSettings';
-import { Button } from 'components/Button/Button';
+import { StyledButton } from 'components/Button/Button.styled';
 import { MovieCard } from 'components/MovieCard/MovieCard';
+import { Navigation, StyledNavLink } from './MovieDetailsPage.styled';
+import { Title } from 'components/StyledHeading/Title.styled';
+import { Spinner } from 'components/Spinner/Spinner';
 
 const Cast = lazy(() => import('components/Cast/Cast' /* webpackChunkName: "cast" */));
 const Rewiews = lazy(() => import('components/Reviews/Reviews' /* webpackChunkName: "reviews" */));
@@ -31,19 +26,21 @@ export default function MovieDetailsPage() {
   };
 
   return (
-    <>
-      <h3>Additional information</h3>
-      <ul>
-        <li>
-          <NavLink to={{ ...location, pathname: `${url}/cast` }}>Cast</NavLink>
-        </li>
-        <li>
-          <NavLink to={{ ...location, pathname: `${url}/reviews` }}>Reviews</NavLink>
-        </li>
-      </ul>
-      <Button name="Go back" onClick={handleGoBack} />
-      {movie && <MovieCard detailMovie={movie} />}
-      <Suspense fallback={null}>
+    <div>
+      <StyledButton onClick={handleGoBack}>Go back</StyledButton>
+      {movie && <MovieCard detailMovie={movie}></MovieCard>}
+      <Navigation>
+        <Title>{'Additional information ->'}</Title>
+        <ul>
+          <li>
+            <StyledNavLink to={{ ...location, pathname: `${url}/cast` }}>Cast</StyledNavLink>
+          </li>
+          <li>
+            <StyledNavLink to={{ ...location, pathname: `${url}/reviews` }}>Reviews</StyledNavLink>
+          </li>
+        </ul>
+      </Navigation>
+      <Suspense fallback={<Spinner />}>
         <Switch>
           <Route path={`${url}/cast`}>
             <Cast id={movieId} />
@@ -53,6 +50,6 @@ export default function MovieDetailsPage() {
           </Route>
         </Switch>
       </Suspense>
-    </>
+    </div>
   );
 }
