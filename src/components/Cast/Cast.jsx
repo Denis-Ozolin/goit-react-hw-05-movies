@@ -1,4 +1,3 @@
-// import { ImageNotFound } from 'components/ImageNotFound/ImageNotFound';
 import { useState, useEffect } from 'react';
 import { fetchMovieCast, BASE_PHOTO_URL } from 'services/apiSettings';
 import { ActorsList } from 'components/ActorsList/ActorsList';

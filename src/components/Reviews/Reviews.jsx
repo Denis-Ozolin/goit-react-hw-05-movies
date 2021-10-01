@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchMovieReviews } from 'services/apiSettings';
+import { ReviewItem } from './Reviews.styled';
 
 export default function Rewiews({ id }) {
   const [reviews, setReviews] = useState(null);
@@ -15,10 +16,10 @@ export default function Rewiews({ id }) {
       {reviews && (
         <ul>
           {reviews.map(review => (
-            <li key={review.id}>
-              <h2>{review.author}</h2>
+            <ReviewItem key={review.id}>
+              <h4>{review.author}</h4>
               <p>{review.content}</p>
-            </li>
+            </ReviewItem>
           ))}
         </ul>
       )}

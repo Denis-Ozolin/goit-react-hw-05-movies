@@ -13,15 +13,15 @@ export function MovieCard({ detailMovie }) {
       <CardInfo>
         <Title>{title}</Title>
         <Score>
-          Use Score:
-          <span>{Math.round((vote_average * 100) / 10)}%</span>
+          {'Use Score: '}
+          <span>{Math.round((vote_average * 100) / 10)}</span>%
         </Score>
         <Description>{overview}</Description>
         <h4>Genres:</h4>
         <ul>
           {genres.map(genre => (
             <li key={genre.id}>
-              <p>{genre.name}</p>
+              <span>{genre.name}</span>
             </li>
           ))}
         </ul>

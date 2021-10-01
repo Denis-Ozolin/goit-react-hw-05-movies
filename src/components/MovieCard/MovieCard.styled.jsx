@@ -8,6 +8,10 @@ export const Card = styled.section`
 
 export const Poster = styled.div`
   margin-right: 24px;
+
+  & > img {
+    min-width: 360px;
+  }
 `;
 
 export const CardInfo = styled.div`
@@ -16,25 +20,24 @@ export const CardInfo = styled.div`
 
   & > p {
     margin-bottom: 12px;
-
-    & span {
-      margin-left: 6px;
-      color: #8dd83d;
-      font-size: 18px;
-    }
   }
 
   & h4 {
     margin-bottom: 10px;
-    color: #8dd83d;
-    font-weight: 500;
+    font-weight: normal;
   }
 
   & > ul {
-    margin-left: 12px;
+    list-style: disc;
+    list-style-position: inside;
 
     & li {
       margin-bottom: 6px;
+      color: #8dd83d;
+
+      & > span {
+        color: #fff;
+      }
     }
   }
 `;
@@ -42,6 +45,12 @@ export const CardInfo = styled.div`
 export const Score = styled.span`
   display: block;
   margin-bottom: 24px;
+
+  & > span {
+    margin-left: 6px;
+    color: #8dd83d;
+    font-size: 18px;
+  }
 `;
 
 export const Description = styled.p`
