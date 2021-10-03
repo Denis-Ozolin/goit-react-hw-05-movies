@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { MoviesInfoHeader } from 'components/MoviesInfoHeader/MoviesInfoHeader';
 import { Spinner } from 'components/Spinner/Spinner';
 import { Container } from './App.styled';
@@ -18,15 +18,16 @@ export function App() {
       <MoviesInfoHeader />
       <Suspense fallback={<Spinner />}>
         <Switch>
+          <Route path="/" exact>
+            <HomePage />
+          </Route>
           <Route path="/movies" exact>
             <MoviesPage />
           </Route>
           <Route path="/movies/:movieId">
             <MovieDetailsPage />
           </Route>
-          <Route path="/">
-            <HomePage />
-          </Route>
+          <Redirect to="/" />
         </Switch>
       </Suspense>
     </Container>

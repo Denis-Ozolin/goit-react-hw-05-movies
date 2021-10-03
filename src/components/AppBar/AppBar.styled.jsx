@@ -3,13 +3,13 @@ import { NavLink } from 'react-router-dom';
 
 export const StyledNavLink = styled(NavLink)`
   padding: 2px 0;
-  color: #fff;
+  color: ${props => props.theme.defaultColor};
   text-decoration: none;
   transition: color 0.25s;
 
   &:hover,
   :focus {
-    color: #8dd83d;
+    color: ${props => props.theme.accentColor};
   }
 
   &:not(:last-child) {

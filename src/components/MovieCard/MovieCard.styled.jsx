@@ -48,14 +48,14 @@ export const Score = styled.span`
 
   & > span {
     margin-left: 6px;
-    color: #8dd83d;
+    color: ${props => props.theme.accentColor};
     font-size: 18px;
   }
 `;
 
 export const Description = styled.p`
   padding: 12px;
-  color: #fff;
-  border: 1px solid #a7bba8;
+  color: ${props => props.theme.defaultColor};
+  border: 1px solid ${props => props.theme.secondColor};
   border-radius: 4px;
 `;

@@ -12,11 +12,11 @@ export const List = styled.ul`
 
 export const Movie = styled(Link)`
   text-decoration: none;
-  color: #a7bba8;
+  color: ${props => props.theme.secondColor};
   transition: color 0.25s;
 
   &:hover,
   :focus {
-    color: #8dd83d;
+    color: ${props => props.theme.accentColor};
   }
 `;

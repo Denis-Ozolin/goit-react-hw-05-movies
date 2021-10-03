@@ -11,13 +11,13 @@ export const Form = styled.form`
     width: 240px;
     margin-right: 12px;
     padding: 8px 4px;
-    background: #fff;
+    background: ${props => props.theme.defaultColor};
     border-radius: 4px;
-    border: 1px solid #fff;
+    border: 1px solid ${props => props.theme.defaultColor};
     outline: none;
 
     &:focus {
-      border: 1px solid #8dd83d;
+      border: 1px solid ${props => props.theme.accentColor};
     }
   }
 `;

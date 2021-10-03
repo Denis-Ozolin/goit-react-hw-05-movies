@@ -1,5 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { useParams, Route, Switch, useRouteMatch, useLocation, useHistory } from 'react-router-dom';
+import { Route, Switch, useParams, useRouteMatch, useLocation, useHistory } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/apiSettings';
 import { StyledButton } from 'components/Button/Button.styled';
 import { MovieCard } from 'components/MovieCard/MovieCard';
@@ -48,6 +48,7 @@ export default function MovieDetailsPage() {
           <Route path={`${url}/reviews`}>
             <Rewiews id={movieId} />
           </Route>
+          {/* <Redirect to="/"/> */}
         </Switch>
       </Suspense>
     </div>

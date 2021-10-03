@@ -27,17 +27,16 @@ export const StyledNavLink = styled(NavLink)`
   padding: 8px 0;
   text-align: center;
   text-decoration: none;
-  border: 2px solid #333833;
+  border: 2px solid ${props => props.theme.bgColor};
+  outline: 1px solid ${props => props.theme.defaultColor};
   border-radius: 4px;
-  color: #fff;
-  background-color: #8dd83d;
+  color: ${props => props.theme.defaultColor};
+  background-color: ${props => props.theme.accentColor};
   opacity: 0.7;
   transition: opacity 0.25s, border 0.25s;
 
   &:hover,
   :focus {
     opacity: 1;
-    padding: -2px;
-    outline: 1px solid #fff;
   }
 `;

@@ -24,7 +24,7 @@ export const Item = styled.li`
       text-align: center;
       border-bottom-left-radius: 4px;
       border-bottom-right-radius: 4px;
-      background-color: #8dd83d;
+      background-color: ${props => props.theme.accentColor};
     }
   }
 `;
